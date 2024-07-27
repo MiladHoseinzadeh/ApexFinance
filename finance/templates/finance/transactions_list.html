@@ -28,7 +28,13 @@
 						<tr>
 							<td class="px-6 py-3">{{ transaction.date }}</td>
 							<td class="px-6 py-3">{{ transaction.category }}</td>
-							<td class="px-6 py-3">{{ transaction.type }}</td>
+							<td class="px-6 py-3">
+								{% if transaction.type == 'i' %}
+									Income
+								{% else %}
+									Expense
+								{% endif %}
+							</td>
 							<td class="px-6 py-3">{{ transaction.amount }}</td>
 						</tr>
 					{% endfor %}
