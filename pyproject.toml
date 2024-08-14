@@ -39,6 +39,7 @@ cffi = "^1.16.0"
 certifi = "^2024.7.4"
 black = "^24.4.2"
 asgiref = "^3.8.1"
+django-htmx = "^1.19.0"
 
 
 [build-system]
