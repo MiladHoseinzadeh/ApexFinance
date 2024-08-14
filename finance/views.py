@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from finance.filters import TransactionFilter
 from finance.models import Transaction
 
 
@@ -10,9 +11,12 @@ def index(request):
 
 @login_required
 def transactions_list(request):
-    transactions = Transaction.objects.filter(user=request.user)
+    transaction_filter = TransactionFilter(
+        request.GET,
+        queryset=Transaction.objects.filter(user=request.user)
+    )
     
     context = {
-        "transactions":transactions
+        "transaction_filter":transaction_filter
     }
     return render(request, "finance/transactions_list.html", context)
